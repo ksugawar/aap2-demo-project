@@ -1,0 +1,11 @@
+---
+- name: demo playbook
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: ping node
+      ansible.builtin.ping:
+
+    - name: show this node's facts
+      ansible.builtin.debug:
+        var: ansible_facts
