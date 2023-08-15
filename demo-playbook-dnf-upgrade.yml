@@ -1,0 +1,10 @@
+---
+- name: demo playbook dnf upgrade
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: dnf upgrade -y
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
