@@ -15,13 +15,13 @@
       ansible.builtin.file:
         path: "{{ tmpdir.path }}/{{ 'dummyfile%05d' | format(item|int) }}"
         state: touch
-      with_sequence: start=1 end=1000
+      with_sequence: start=1 end=100
 
     - name: remove the 1000 files that you just created
       ansible.builtin.file:
         path: "{{ tmpdir.path }}/{{ 'dummyfile%05d' | format(item|int) }}"
         state: absent
-      with_sequence: start=1 end=1000
+      with_sequence: start=1 end=100
 
     - name: remove the tmpdir
       ansible.builtin.file:
