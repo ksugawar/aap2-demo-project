@@ -8,13 +8,13 @@
 
     - name: touch 1000 files
       ansible.builtin.file:
-        path: "/var/tmp/{{ 'dummyfile%05d' | format(int(item)) }}"
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(item|int) }}"
         state: touch
       loop: "{{ range(1, 1000) }}"
 
     - name: remove the 1000 files that you just created
       ansible.builtin.file:
-        path: "/var/tmp/{{ 'dummyfile%05d' | format(int(item)) }}"
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(item|int) }}"
         state: absent
       loop: "{{ range(1, 1000)|list }}"
       
