@@ -1,0 +1,23 @@
+---
+- name: demo playbook
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: ping node
+      ansible.builtin.ping:
+
+    - name: touch 1000 files
+      ansible.builtin.file:
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(item|int) }}"
+        state: touch
+      with_sequence: start=1 end=1000
+
+    - name: remove the 1000 files that you just created
+      ansible.builtin.file:
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(item|int) }}"
+        state: absent
+      with_sequence: start=1 end=1000
+      
+    - name: show this node's facts
+      ansible.builtin.debug:
+        var: ansible_facts
