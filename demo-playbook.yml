@@ -6,6 +6,18 @@
     - name: ping node
       ansible.builtin.ping:
 
+    - name: touch 1000 files
+      ansible.builtin.file:
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(int(item)) }}"
+        state: touch
+      loop: "{{ range(1, 1000) }}"
+
+    - name: remove the 1000 files that you just created
+      ansible.builtin.file:
+        path: "/var/tmp/{{ 'dummyfile%05d' | format(int(item)) }}"
+        state: absent
+      loop: "{{ range(1, 1000) }}"
+      
     - name: show this node's facts
       ansible.builtin.debug:
         var: ansible_facts
