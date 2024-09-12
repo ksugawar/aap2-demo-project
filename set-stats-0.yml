@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - set_stats:
+        var_a: "Variable A"
+        var_b: "Variable B"
+        var_c: "Variable C"

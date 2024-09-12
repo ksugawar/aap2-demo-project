@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - debug:
+        var: var_a
+      when: var_a is defined
+    - debug:
+        var: "var_a is undefined"
+      when: var_a is undefined
