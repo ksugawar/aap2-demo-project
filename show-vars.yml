@@ -1,0 +1,25 @@
+---
+- name: show_vars - set_stats / workflow extra vars demo playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - debug:
+        var: var_a
+      when: var_a is defined
+    - debug:
+        msg: "var_a is UNDEFINED"
+      when: var_a is undefined
+
+    - debug:
+        var: var_b
+      when: var_b is defined
+    - debug:
+        msg: "var_b is UNDEFINED"
+      when: var_b is undefined
+
+    - debug:
+        var: var_c
+      when: var_c is defined
+    - debug:
+        msg: "var_c is UNDEFINED"
+      when: var_c is undefined
