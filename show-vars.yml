@@ -1,5 +1,5 @@
 ---
-- name: show_vars - set_stats / workflow extra vars demo playbook
+- name: show_vars - a demo playbook for receiving variables from workflow or other job templates
   hosts: localhost
   gather_facts: false
   tasks:

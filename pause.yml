@@ -1,9 +1,9 @@
 ---
-- name: pause.yml - pause some time
+- name: pause some time
   hosts: localhost
   gather_facts: false
   tasks:
-    ansible.builtin.pause:
-      echo: "pausing for 3 minutes..."
-      minutes: 3
+    - ansible.builtin.pause:
+        echo: "pausing for 3 minutes..."
+        minutes: 3
       
