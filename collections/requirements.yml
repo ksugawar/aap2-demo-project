@@ -1,4 +1,4 @@
 collections:
   - name: community.windows
     version: 3.0.0
-    source: https://aap25.example.com/api/galaxy/content/community/
+    source: https://aap253.example.com/api/galaxy/content/community/
