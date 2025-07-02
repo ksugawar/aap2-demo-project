@@ -1,0 +1,4 @@
+collections:
+  - name: community.windows
+    version: 3.0.0
+    source: https://aap253.example.com/api/galaxy/
