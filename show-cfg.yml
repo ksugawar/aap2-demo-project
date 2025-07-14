@@ -1,0 +1,7 @@
+---
+- name: show_vars - a demo playbook for receiving variables from workflow or other job templates
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+	msg: "ANSIBLE_CONFIG='{{ lookup('ansible.builtin.env', 'ANSIBLE_CONFIG') }}'"
