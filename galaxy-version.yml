@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: ansible-galaxy --version
+    ansible.builtin.command:
+      cmd: "ansible-galaxy --version"
+    register: galaxyout
+  - ansible.builtin.debug:
+      var: galaxyout.stdout_lines
