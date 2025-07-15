@@ -9,3 +9,8 @@
     register: galaxyout
   - ansible.builtin.debug:
       var: galaxyout.stdout_lines
+  - ansible.builtin.slurp:
+      src: "{{ galaxyout.stdout_lines[1].split('=')[-1] | trim }}"
+    register: ansible_cfg
+  - ansible.builtin.debug:
+      msg: "{{ ansible_cfg['content'] | b64decode }}"
