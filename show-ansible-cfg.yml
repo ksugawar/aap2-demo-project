@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: ANSIBLE_CONFIG
+    ansible.builtin.debug:
+      msg: "ANSIBLE_CONFIG='{{ lookup('ansible.builtin.env', 'ANSIBLE_CONFIG') }}'"
+  - name: ansible-galaxy --version
+    ansible.builtin.command:
+      cmd: "ansible-galaxy --version"
+    register: galaxyout
+  - ansible.builtin.debug:
+      var: galaxyout.stdout_lines
+  - ansible.builtin.slurp:
+      src: "{{ galaxyout.stdout_lines[1].split('=')[-1] | trim }}"
+    register: ansible_cfg
+  - ansible.builtin.debug:
+      msg: "{{ ansible_cfg['content'] | b64decode }}"
