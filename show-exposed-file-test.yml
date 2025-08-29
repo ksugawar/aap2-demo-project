@@ -4,6 +4,13 @@
   
   tasks:
     - name: show exposed file
+      ansible.builtin.command: cat /etc/krb5.conf
+      register: result
+
+    - ansible.builtin.debug:
+        msg: "{{ result.stdout }}"
+
+    - name: show another exposed file
       ansible.builtin.command: cat /etc/krb5.conf.d/redhat.conf
       register: result
 
