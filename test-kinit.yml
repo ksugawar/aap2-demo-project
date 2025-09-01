@@ -8,7 +8,7 @@
       register: mktemp
 
     - name: test kinit
-      ansible.builtin.shell: echo '"{{ krb_password }}"' | kinit
+      ansible.builtin.shell: echo '"{{ krb_password }}"' | kinit '"{{ krb_user }}"'
       environment:
         KRB5CCNAME: "{{ mktemp.stdout_lines[0] }}"
       register: result
