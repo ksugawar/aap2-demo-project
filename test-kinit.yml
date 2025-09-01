@@ -1,0 +1,11 @@
+---
+- name: show exposed file test
+  hosts: localhost
+  
+  tasks:
+    - name: test kinit
+      ansible.builtin.shell: echo '"{{ krb_password }}"' | kinit
+      register: result
+
+    - ansible.builtin.debug:
+        msg: "{{ result.stdout }}"
