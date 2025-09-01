@@ -3,8 +3,14 @@
   hosts: localhost
   
   tasks:
+    - name: make a temporary directory
+      ansible.builtin.command: mktemp
+      register: mktemp
+
     - name: test kinit
       ansible.builtin.shell: echo '"{{ krb_password }}"' | kinit
+      environment:
+        KRB5CCNAME: "{{ mktemp.stdout_lines[0] }}"
       register: result
 
     - ansible.builtin.debug:
